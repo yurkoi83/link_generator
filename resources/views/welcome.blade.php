@@ -59,8 +59,8 @@
                     <th scope="col">Url</th>
                     <th scope="col">Visited</th>
                     <th scope="col">Max. Visit</th>
-                    <th scope="col">Created at</th>
                     <th scope="col">Life Time (h)</th>
+                    <th scope="col">Created at</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -68,10 +68,11 @@
                     <tr>
                         <th scope="row">{{ $key+1 }}</th>
                         <td><a href="{{ URL::to($value->token)  }}">{{ $value->url }}</a></td>
-                        <td {{ \App\Helpers\UrlHelper::maxVisitDetect($value) ? 'class=text-danger' : 'class=text-success' }}>{{ $value->total_visit }} </td>
-                        <td>{{ $value->max_visit }}</td>
-                        <td>{{ $value->created_at->format('Y-m-d h:m') }}</td>
+                        <td>{{ $value->total_visit }} </td>
+                        <td {{ \App\Helpers\UrlHelper::maxVisitDetect($value) ? 'class=text-danger' : 'class=text-success' }}>{{ $value->max_visit }}</td>
                         <td {{ \App\Helpers\UrlHelper::expire($value) ? 'class=text-danger' : 'class=text-success' }}>{{ $value->life_time }}</td>
+                        <td>{{ $value->created_at->format('Y-m-d h:m') }}</td>
+
                     </tr>
                 @endforeach
                 </tbody>
